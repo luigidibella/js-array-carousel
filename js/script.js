@@ -12,6 +12,11 @@ const images = [
   'img/05.webp',
 ]
 
+const imagesLength = images.length;
+for (let i = 0; i < imagesLength; i++) {
+  images.push(images[i]);
+}
+
 for(let i = 0; i < images.length; i++){
   const img = images[i];
   itemsWrapper.innerHTML += `<img class="img hidden" src="${img}" alt=""></img>`
@@ -23,12 +28,14 @@ itemsCollection[0].classList.remove('hidden');
 
 up.addEventListener('click', function(){
   itemsCollection[counterImg--].classList.add('hidden');
+  counterImg = (counterImg - 1 + itemsCollection.length) % itemsCollection.length;
   itemsCollection[counterImg].classList.remove('hidden');
   console.log(counterImg);
 })
 
 down.addEventListener('click', function(){
   itemsCollection[counterImg++].classList.add('hidden');
+  counterImg = (counterImg + 1) % itemsCollection.length;
   itemsCollection[counterImg].classList.remove('hidden');
   console.log(counterImg);
 })
