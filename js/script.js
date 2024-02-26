@@ -1,4 +1,8 @@
-const itemsWrapper = document.querySelector('.items-wrapper')
+const itemsWrapper = document.querySelector('.items-wrapper');
+const up = document.querySelector('.up');
+const down = document.querySelector('.down');
+
+let counterImg = 0;
 
 const images = [
   'img/01.webp',
@@ -16,3 +20,15 @@ for(let i = 0; i < images.length; i++){
 const itemsCollection = document.getElementsByClassName('img');
 
 itemsCollection[0].classList.remove('hidden');
+
+up.addEventListener('click', function(){
+  itemsCollection[counterImg--].classList.add('hidden');
+  itemsCollection[counterImg].classList.remove('hidden');
+  console.log(counterImg);
+})
+
+down.addEventListener('click', function(){
+  itemsCollection[counterImg++].classList.add('hidden');
+  itemsCollection[counterImg].classList.remove('hidden');
+  console.log(counterImg);
+})
